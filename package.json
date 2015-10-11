@@ -1,0 +1,19 @@
+{
+  "name": "Undefined-server",
+  "version": "0.0.1",
+  "description": "commongoods",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ambrosechua/Undefined-server.git"
+  },
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "body-parser": "^1.12.4",
+    "express": "^4.12.4",
+    "musicmetadata": "^2.0.1"
+  },
+  "private": true
+}
