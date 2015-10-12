@@ -16,6 +16,10 @@ var music = {
 	artists: {}
 };
 
+var toURL = function (str) {
+	return encodeURIComponent(str);
+};
+
 var promise = new Promise(function (resolve, reject) {
 	fs.readdir(path.join(__dirname, "music"), function (err, files) {
 		if (err || !files) {
@@ -88,7 +92,7 @@ var promise = new Promise(function (resolve, reject) {
 																number = music.artists[artist].albums[album].tracks.length + 1;
 															}
 															metadata.number = number;
-															metadata.file = "/tracks/" + artist + "/" + album + "/" + title;
+															metadata.file = toURL("/tracks/" + artist + "/" + album + "/" + title);
 															music.artists[artist].albums[album].tracks[number - 1] = metadata;
 															
 															tracks.artists[artist].albums[album].tracks[number - 1] = {
@@ -168,11 +172,11 @@ promise.then(function () {
 	for (var artist in music.artists) {
 		for (var album in music.artists[artist].albums) {
 			for (var track in music.artists[artist].albums[album].tracks) {
-				music.artists[artist].albums[album].tracks[track].picture = "/art/" + artist + "/" + album + "/" + (parseInt(track, 10) + 1);
+				music.artists[artist].albums[album].tracks[track].picture = toURL("/art/" + artist + "/" + album + "/" + (parseInt(track, 10) + 1));
 			}
-			music.artists[artist].albums[album].picture = "/art/" + artist + "/" + album;
+			music.artists[artist].albums[album].picture = toURL("/art/" + artist + "/" + album);
 		}
-		music.artists[artist].picture = "/art/" + artist;
+		music.artists[artist].picture = toURL("/art/" + artist);
 	}
 	}
 	catch (e) {
