@@ -17,7 +17,7 @@ var music = {
 };
 
 var toURL = function (str) {
-	return encodeURIComponent(str);
+	return encodeURI(str);
 };
 
 var promise = new Promise(function (resolve, reject) {
